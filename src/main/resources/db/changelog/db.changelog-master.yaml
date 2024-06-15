@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1111111111111-12
+      author: catalin_danisor
+  - include:
+      - file: db/changelog/changelog-schema.yaml

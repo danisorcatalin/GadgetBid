@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gadget-staging",
+  "private_key_id": "fdbc3c8b3d2ebd5d6d238d5deca4d52c95",
+  "private_key": "-----BEGIN PRIVATE KEY-----/Hjy2ICYncEWLzz5z3us-----END PRIVATE KEY-----\n",
+  "client_email": "gadget-staging@appspot.gserviceaccount.com",
+  "client_id": "112468627300858229416",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gadget-staging%40appspot.gserviceaccount.com"
+}

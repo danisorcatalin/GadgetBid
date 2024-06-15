@@ -1,0 +1,43 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: www.gadgetbid.com
+    expiration-time: 86400
+spring:
+  application:
+    name: GadgetBid
+  config.activate.on-profile: init
+  datasource:
+    url: jdbc:postgresql://172.20.0.1:5432/gadgetbid
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driverClassName: org.postgresql.Driver
+  jackson:
+    date-format: com.gadget.util.RFC3339DateFormat
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+  jpa:
+    show-sql: false
+  liquibase:
+    enabled: true
+    user: ${LIQUIBASE_USER}
+    password: ${LIQUIBASE_PASSWORD}
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+server:
+  http2:
+    enabled: true
+  port: 8080
+  servlet:
+    context-path: /api
+
+gcp:
+  bucket:
+    name: staging.gadgetbid.appspot.com
+    prefix: user/documents
+    lb:
+      domain: google-bucket

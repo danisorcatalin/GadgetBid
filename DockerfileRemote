@@ -1,0 +1,24 @@
+FROM eclipse-temurin:11-jdk as BUILD
+
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+COPY gadget-staging-fdbc3c8b3dd0.json .
+
+RUN curl https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -o cloud_sql_proxy && chmod +x cloud_sql_proxy
+
+RUN chmod +x ./mvnw && ./mvnw package -DskipTests=true
+
+ENV SPRING_PROFILES_ACTIVE=init
+
+RUN ./cloud_sql_proxy -instances=edex-staging:europe-west1:crowdfunding=tcp:3306 -credential_file=gadget-staging-fdbc3c8b3dd0.json & sleep 2 && \
+    java -XX:DumpLoadedClassList=classes.lst -jar /target/gadget-backend.jar
+RUN java -Xshare:dump -XX:SharedClassListFile=classes.lst -XX:SharedArchiveFile=appcds.jsa --class-path /target/gadget-backend.jar
+
+FROM eclipse-temurin:11-jre
+
+COPY --from=BUILD /target/gadget-backend.jar /gadget-backend.jar
+COPY --from=BUILD /appcds.jsa /appcds.jsa
+
+ENTRYPOINT java -Xshare:on -XX:SharedArchiveFile=appcds.jsa -Dspring.profiles.active=staging -jar gadget-backend.jar

@@ -1,0 +1,998 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1639775624446-1
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: url
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: method
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: payload
+                  type: TEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  name: userId
+                  type: INT
+            tableName: audit
+  - changeSet:
+      id: 1639775624446-8
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: data
+                  type: TEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: updatedAt
+                  type: datetime
+            tableName: feedback
+  - changeSet:
+      id: 1639775624446-9
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: data
+                  type: VARCHAR(255)
+              - column:
+                  name: extra
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  name: userId
+                  type: INT
+              - column:
+                  name: feedbackId
+                  type: INT
+            tableName: feedback_answer
+  - changeSet:
+      id: 1639775624446-12
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: timestamp
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+            tableName: migrations
+  - changeSet:
+      id: 1639775624446-13
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: message
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: updatedAt
+                  type: datetime
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  name: userId
+                  type: INT
+            tableName: news_feed
+  - changeSet:
+      id: 1639775624446-14
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: fileType
+                  type: VARCHAR(10)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: filePath
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: size
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  name: newsFeedId
+                  type: INT
+            tableName: news_feed_file
+  - changeSet:
+      id: 1639775624446-15
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: firstName
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: lastName
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: phone
+                  type: VARCHAR(20)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role
+                  type: VARCHAR(255)
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: personalNumber
+                  type: VARCHAR(255)
+              - column:
+                  name: walletId
+                  type: VARCHAR(255)
+              - column:
+                  name: cardType
+                  type: VARCHAR(255)
+              - column:
+                  name: cardNumber
+                  type: VARCHAR(255)
+              - column:
+                  name: cardValidFrom
+                  type: VARCHAR(255)
+              - column:
+                  name: cardValidUntil
+                  type: VARCHAR(255)
+              - column:
+                  name: country
+                  type: VARCHAR(255)
+              - column:
+                  name: dateOfBirth
+                  type: VARCHAR(255)
+              - column:
+                  name: twoFactorAuthenticationSecret
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: twoFactorActivated
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: verified
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: active
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: kycCompleted
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: tourComplete
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: questionsCompleted
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: updatedAt
+                  type: datetime
+              - column:
+                  name: accountManagerId
+                  type: INT
+              - column:
+                  name: qaScore
+                  type: INT
+              - column:
+                  name: properties
+                  type: VARCHAR(255)
+            tableName: user
+  - changeSet:
+      id: 1639775624446-16
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: answer
+                  type: TEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  name: userId
+                  type: INT
+              - column:
+                  name: investmentId
+                  type: INT
+              - column:
+                  constraints:
+                    unique: true
+                  name: questionId
+                  type: INT
+            tableName: user_answer
+  - changeSet:
+      id: 1639775624446-17
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sessionId
+                  type: VARCHAR(255)
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: response
+                  type: TEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  name: userId
+                  type: INT
+            tableName: user_kyc
+  - changeSet:
+      id: 1639775624446-18
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sessionId
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: mediaId
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: filePath
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: size
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  name: userId
+                  type: INT
+            tableName: user_kyc_file
+  - changeSet:
+      id: 1639775624446-19
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValue: OPEN
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: updatedAt
+                  type: datetime
+              - column:
+                  constraints:
+                    unique: true
+                  name: userId
+                  type: INT
+              - column:
+                  name: accountManagerId
+                  type: INT
+            tableName: user_onboard
+  - changeSet:
+      id: 1639775624446-20
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: onboardId
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: type
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: mimeType
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: fileExtension
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: filePath
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: size
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValue: NEW
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: createdAt
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  name: updatedAt
+                  type: datetime
+            tableName: user_onboard_file
+  - changeSet:
+      id: 1639775624446-21
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: question
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: variant1
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: variant2
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: variant3
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: correctVariant
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: order
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: active
+                  type: INT
+            tableName: user_question
+  - changeSet:
+      id: 1639775624446-25
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: feedbackId
+            indexName: FK_2ecdf7d110eed367201753c7824
+            tableName: feedback_answer
+  - changeSet:
+      id: 1639775624446-26
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: onboardId
+            indexName: FK_38fa4ef413a37ab67232e8af6b9
+            tableName: user_onboard_file
+  - changeSet:
+      id: 1639775624446-27
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+            indexName: FK_3ff4fbb6b1f1214813d84048c82
+            tableName: user_kyc_file
+  - changeSet:
+      id: 1639775624446-28
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: accountManagerId
+            indexName: FK_40792ed1b78c27743e676ccc070
+            tableName: user_onboard
+  - changeSet:
+      id: 1639775624446-29
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+            indexName: FK_4333f41c4fc441ddb4ba0cc9f2d
+            tableName: user_answer
+  - changeSet:
+      id: 1639775624446-30
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+            indexName: FK_4e246b1a648a4bf051e4d082eb5
+            tableName: user_kyc
+  - changeSet:
+      id: 1639775624446-32
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: accountManagerId
+            indexName: FK_5e1789a08e53df145a13d040784
+            tableName: user
+  - changeSet:
+      id: 1639775624446-33
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: newsFeedId
+            indexName: FK_5e5fdf4b657adf5d44f843d9a2e
+            tableName: news_feed_file
+  - changeSet:
+      id: 1639775624446-34
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+            indexName: FK_66455f14cb2ef236173c4fc220f
+            tableName: feedback_answer
+  - changeSet:
+      id: 1639775624446-35
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+            indexName: FK_7ae389e858ad6f2c0c63112e387
+            tableName: audit
+  - changeSet:
+      id: 1639775624446-42
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+            indexName: FK_d5f36f3fd2216c20d699c2e81a2
+            tableName: news_feed
+  - changeSet:
+      id: 1639775624446-43
+      author: catalin_danisor
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: investmentId
+            indexName: FK_e255e13fc3632fc1522f27b8313
+            tableName: user_answer
+  - changeSet:
+      id: 1639775624446-50
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: feedbackId
+            baseTableName: feedback_answer
+            constraintName: FK_2ecdf7d110eed367201753c7824
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: feedback
+            validate: true
+  - changeSet:
+      id: 1639775624446-51
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: onboardId
+            baseTableName: user_onboard_file
+            constraintName: FK_38fa4ef413a37ab67232e8af6b9
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user_onboard
+            validate: true
+  - changeSet:
+      id: 1639775624446-52
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: questionId
+            baseTableName: user_answer
+            constraintName: FK_39bb21c637a8c11e2f3abd527e6
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user_question
+            validate: true
+  - changeSet:
+      id: 1639775624446-53
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: user_kyc_file
+            constraintName: FK_3ff4fbb6b1f1214813d84048c82
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-54
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: accountManagerId
+            baseTableName: user_onboard
+            constraintName: FK_40792ed1b78c27743e676ccc070
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-55
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: user_answer
+            constraintName: FK_4333f41c4fc441ddb4ba0cc9f2d
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-56
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: user_kyc
+            constraintName: FK_4e246b1a648a4bf051e4d082eb5
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-58
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: accountManagerId
+            baseTableName: user
+            constraintName: FK_5e1789a08e53df145a13d040784
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-59
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: newsFeedId
+            baseTableName: news_feed_file
+            constraintName: FK_5e5fdf4b657adf5d44f843d9a2e
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: news_feed
+            validate: true
+  - changeSet:
+      id: 1639775624446-60
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: feedback_answer
+            constraintName: FK_66455f14cb2ef236173c4fc220f
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-61
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: audit
+            constraintName: FK_7ae389e858ad6f2c0c63112e387
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-68
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: news_feed
+            constraintName: FK_d5f36f3fd2216c20d699c2e81a2
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1639775624446-69
+      author: catalin_danisor
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: user_onboard
+            constraintName: FK_d957f7f728e56a9ba126db40bab
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 16397756224446-21
+      author: catalin_danisor
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: question
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: variant1
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: variant2
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: variant3
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: correctVariant
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: order
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: active
+                  type: INT
+            tableName: user_question_v2
